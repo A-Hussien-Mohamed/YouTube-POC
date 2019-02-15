@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div>
+      <button type="button" class="btn" data-toggle="collapse" data-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-sliders-h"></i> Filter</button>
+    </div>
+    <div class="collapse" id="filter">
+      <div class="card card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <div class="media" *ngFor="let video of videoList.items">
+      <div class="media-pic">
+        <img class="align-self-start col-md-12 " src="{{video.snippet.thumbnails.medium.url}}" alt="{{video.snippet.title}}">
+      </div>
+      <div class="media-body pl-3 col-md-9 col-sm-9 col-xs-9">
+        <div class="title">{{video.snippet.title}}</div>
+        <div class="stats">
+          <span><i class="fas fa-upload"></i>{{video.snippet.publishedAt | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="description">{{video.snippet.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>
