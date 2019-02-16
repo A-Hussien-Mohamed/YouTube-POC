@@ -9,14 +9,16 @@ import { VideoListComponent } from './video-list/video-list.component';
 import { FormsModule } from '@angular/forms';
 import { DataService } from './services/BL';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { LoaderInterceptor } from './interceptors/loader-interceptor.service'
+import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
+import { VideoDetailsComponent } from './video-details/video-details.component'
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideoListComponent
+    VideoListComponent,
+    VideoDetailsComponent
   ],
   imports: [
     BrowserModule,
