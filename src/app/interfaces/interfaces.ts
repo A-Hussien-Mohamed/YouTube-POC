@@ -1,9 +1,11 @@
 
 export  class searchPridicate {
+    id:string;
     query: string;
     maxResults: null;
     nextPageToken: string;
     type: string;
+    relatedToVideoId : string
 }
 
 export interface videos {

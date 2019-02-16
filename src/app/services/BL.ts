@@ -12,17 +12,17 @@ export class DataService {
     private videoListSource = new BehaviorSubject({});
     currentVideoList = this.videoListSource.asObservable();
 
-    private loadingBarSourse = new BehaviorSubject(Boolean);
-    loadingComplete = this.loadingBarSourse.asObservable();
+    private videoSource = new BehaviorSubject({});
+    currentVideo = this.videoSource.asObservable();
 
 
     setVideoList(videos: {}) {
         this.videoListSource.next(videos)
     }
-
-    completeLoading() {
-
+    setCurrentVideo(video: {}) {
+        this.videoSource.next(video);
     }
+
     search(searchPredicate: searchPridicate) {
         let responseObejct = {
             "kind": "youtube#searchListResponse",
@@ -367,11 +367,131 @@ export class DataService {
             ]
         }
 
-         this.setVideoList(responseObejct)
+        this.setVideoList(responseObejct)
         // this._apiService.search(searchPredicate).toPromise().then((response) => {
         //     if (response) {
-        //         this.setVideoList(response.items);
+        //         this.setVideoList(response);
         //     }
         // });
+    }
+
+    getVideo(searchPredicate: searchPridicate) {
+        let videoObject = {
+            "kind": "youtube#videoListResponse",
+            "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/yQYe9JuARyZXwKr9x9eDo-8w8QU\"",
+            "pageInfo": {
+                "totalResults": 1,
+                "resultsPerPage": 1
+            },
+            "items": [
+                {
+                    "kind": "youtube#video",
+                    "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/NEsbMsQHXGF0CWvfrf0SXun-T-E\"",
+                    "id": "UOxkGD8qRB4",
+                    "snippet": {
+                        "publishedAt": "2018-11-03T07:30:00.000Z",
+                        "channelId": "UC2t5bjwHdUX4vM2g8TRDq5g",
+                        "title": "K/DA - POP/STARS (ft Madison Beer, (G)I-DLE, Jaira Burns) | Official Music Video - League of Legends",
+                        "description": "K/DA Ahri, K/DA Evelynn, K/DA Kai’Sa, and K/DA Akali take the world stage with their debut single. Keep the show going on the Rift with these new Epic skins.\n\nMEET THE BAND:\n\nhttps://universe.leagueoflegends.com/en_US/kda\n\nLISTEN NOW:\n\nSpotify: http://smarturl.it/kdapopstars/spotify\nApple Music: http://smarturl.it/kdapopstars/applemusic\niTunes: http://smarturl.it/kdapopstars/itunes\nGoogle Play: http://smarturl.it/kdapopstars/googleplay\nDeezer: http://smarturl.it/kdapopstars/deezer\n\nPRODUCTION CREDITS:\n\nK/DA - \"POP/STARS\"\nFeatured artists: Madison Beer, (G)I-DLE, Jaira Burns \nWritten by: Riot Music Team and Harloe\nKorean translation by: Lydia Paek and Minji Kim  \nProduced by: Riot Music Team\nMixed by: Riot Music Team \nMastered by: Riot Music Team\nVocals performed by: Madison Beer, Miyeon of (G)I-DLE, Soyeon of (G)I-DLE, Jaira Burns\nAdditional vocals by: Harloe \nVocal production by: Riot Music Team\nExecutive Producers: Riot Games & Justin Tranter\n\nhttp://madisonbeer.com/\nhttp://www.cubeent.co.kr/gidle\nhttp://www.jairaburns.com/\n\nANIMATION: \n\nFortiche Prod\n\nLYRICS:\n\nYou know who it is\nComing 'round again\nYou want a dose of this\nRight now\nIt’s K/DA uh!\n\nI'm a goddess with a blade\n소리쳐봐 내 이름\n잊지 못하게\nLoud loud loud loud\nI could take it to the top\n절대 멈추지 못해\n내가 끝내주는\nBad gal gal gal\n\nAnd when I start to talk like that (like that)\nOh you won’t know how to react\nI’m a picture perfect face\nWith that wild in my veins\nYou can hear it in my\nGrowl, growl, growl, growl\n\nSo keep your eyes on me now\n무엇을 보든 좋아할 거야\n닿을 수 없는 level\n나와 대결 원한 널 확신해\nWe got it all in our hands now\nSo can you handle what we’re all about\nWe’re so tough\nNot scared to show you up\nCan you feel the rush now?\n\nAin’t nobody bringing us down down down down down down\nThey could try but we’re gonna wear the crown\nYou could go another round round round round round round round\nWish you luck but you’re not bringing us down\nWe go hard\nTill we get it get it\nWe go hard\nWe so in it in it\nWe POP/STARS\nOnly winning winning now\nAin’t nobody bringing us down down down down\n\nHey!\nYou ready for this? (Let's go!)\nSee 언제든지 내 모습 magic\n단 한 번에 내가 잡어\n절대 기죽지 않지 uh!\nPow pow 네가 뭘 알아\n견딜 수 없어, 원해도.\n원하는 게 얼굴에 보여\nI’m trouble and you’re wanting it\nI’m so cold\nWhen I move that way\nYou gonna be so blown\nI’m the realest in the game uh!\n\nSay I’m on fire with a blade\nYou’re about to hear my name\nRinging in your head like oh\n\nSo keep your eyes on me now\n무엇을 보든 좋아할 거야\nWe’re so tough\nNot scared to show you up\nCan you feel the rush now?\n\nAin’t nobody bringing us down down down down down down\nThey could try but we’re gonna wear the crown\nYou could go another round round round round round round round\nWish you luck but you’re not bringing us down\nWe go hard\nTill we get it get it\nWe go hard\nWe so in it in it\nWe POP/STARS\nOnly winning winning now\nAin’t nobody bringing us down down down down\n\nOh... 난 멈추지 않아\nOh oh we go hard\nOh oh we POP/STARS (stars), stars (stars)\n\nAin’t nobody bringing us\nAin’t nobody bringing us down down down down down down\nThey could try but we’re gonna wear the crown\nYou could go another round round round round round round round\nWish you luck but you’re not bringing us down\nWe go hard\nTill we get it get it\nWe go hard\nWe so in it in it\nWe POP/STARS\nOnly winning winning now\nAin’t nobody bringing us down down down down\n\nMORE RIOT GAMES MUSIC:\n\nhttps://www.youtube.com/user/RiotGamesInc/playlists?sort=dd&view=50&shelf_id=23\n\nPLAY LEAGUE OF LEGENDS:\n\nhttp://riot.com/signup\n\n#KDA #POPSTARS #LEAGUEOFLEGENDS",
+                        "thumbnails": {
+                            "default": {
+                                "url": "https://i.ytimg.com/vi/UOxkGD8qRB4/default.jpg",
+                                "width": 120,
+                                "height": 90
+                            },
+                            "medium": {
+                                "url": "https://i.ytimg.com/vi/UOxkGD8qRB4/mqdefault.jpg",
+                                "width": 320,
+                                "height": 180
+                            },
+                            "high": {
+                                "url": "https://i.ytimg.com/vi/UOxkGD8qRB4/hqdefault.jpg",
+                                "width": 480,
+                                "height": 360
+                            },
+                            "standard": {
+                                "url": "https://i.ytimg.com/vi/UOxkGD8qRB4/sddefault.jpg",
+                                "width": 640,
+                                "height": 480
+                            },
+                            "maxres": {
+                                "url": "https://i.ytimg.com/vi/UOxkGD8qRB4/maxresdefault.jpg",
+                                "width": 1280,
+                                "height": 720
+                            }
+                        },
+                        "channelTitle": "League of Legends",
+                        "tags": [
+                            "Riot Games",
+                            "Riot",
+                            "League of Legends",
+                            "League",
+                            "LoL",
+                            "MOBA",
+                            "worlds pop song",
+                            "worlds popstar",
+                            "worlds music video",
+                            "K/DA",
+                            "Ahri",
+                            "Kai’Sa",
+                            "Evelynn",
+                            "Eve",
+                            "Akali",
+                            "K/DA Ahri",
+                            "K/DA Kai’Sa",
+                            "K/DA kaisa",
+                            "K/DA Evelynn",
+                            "K/DA Eve",
+                            "K/DA Akali",
+                            "KDA Ahri",
+                            "KDA Kai’Sa",
+                            "KDA kaisa",
+                            "KDA Evelynn",
+                            "KDA Eve",
+                            "KDA Akali",
+                            "ahri kda",
+                            "kaisa kda",
+                            "eve kda",
+                            "akali kda",
+                            "evelynn kda",
+                            "kai’sa kda",
+                            "lol KDA"
+                        ],
+                        "categoryId": "20",
+                        "liveBroadcastContent": "none",
+                        "defaultLanguage": "en",
+                        "localized": {
+                            "title": "K/DA - POP/STARS (ft Madison Beer, (G)I-DLE, Jaira Burns) | Official Music Video - League of Legends",
+                            "description": "K/DA Ahri, K/DA Evelynn, K/DA Kai’Sa, and K/DA Akali take the world stage with their debut single. Keep the show going on the Rift with these new Epic skins.\n\nMEET THE BAND:\n\nhttps://universe.leagueoflegends.com/en_US/kda\n\nLISTEN NOW:\n\nSpotify: http://smarturl.it/kdapopstars/spotify\nApple Music: http://smarturl.it/kdapopstars/applemusic\niTunes: http://smarturl.it/kdapopstars/itunes\nGoogle Play: http://smarturl.it/kdapopstars/googleplay\nDeezer: http://smarturl.it/kdapopstars/deezer\n\nPRODUCTION CREDITS:\n\nK/DA - \"POP/STARS\"\nFeatured artists: Madison Beer, (G)I-DLE, Jaira Burns \nWritten by: Riot Music Team and Harloe\nKorean translation by: Lydia Paek and Minji Kim  \nProduced by: Riot Music Team\nMixed by: Riot Music Team \nMastered by: Riot Music Team\nVocals performed by: Madison Beer, Miyeon of (G)I-DLE, Soyeon of (G)I-DLE, Jaira Burns\nAdditional vocals by: Harloe \nVocal production by: Riot Music Team\nExecutive Producers: Riot Games & Justin Tranter\n\nhttp://madisonbeer.com/\nhttp://www.cubeent.co.kr/gidle\nhttp://www.jairaburns.com/\n\nANIMATION: \n\nFortiche Prod\n\nLYRICS:\n\nYou know who it is\nComing 'round again\nYou want a dose of this\nRight now\nIt’s K/DA uh!\n\nI'm a goddess with a blade\n소리쳐봐 내 이름\n잊지 못하게\nLoud loud loud loud\nI could take it to the top\n절대 멈추지 못해\n내가 끝내주는\nBad gal gal gal\n\nAnd when I start to talk like that (like that)\nOh you won’t know how to react\nI’m a picture perfect face\nWith that wild in my veins\nYou can hear it in my\nGrowl, growl, growl, growl\n\nSo keep your eyes on me now\n무엇을 보든 좋아할 거야\n닿을 수 없는 level\n나와 대결 원한 널 확신해\nWe got it all in our hands now\nSo can you handle what we’re all about\nWe’re so tough\nNot scared to show you up\nCan you feel the rush now?\n\nAin’t nobody bringing us down down down down down down\nThey could try but we’re gonna wear the crown\nYou could go another round round round round round round round\nWish you luck but you’re not bringing us down\nWe go hard\nTill we get it get it\nWe go hard\nWe so in it in it\nWe POP/STARS\nOnly winning winning now\nAin’t nobody bringing us down down down down\n\nHey!\nYou ready for this? (Let's go!)\nSee 언제든지 내 모습 magic\n단 한 번에 내가 잡어\n절대 기죽지 않지 uh!\nPow pow 네가 뭘 알아\n견딜 수 없어, 원해도.\n원하는 게 얼굴에 보여\nI’m trouble and you’re wanting it\nI’m so cold\nWhen I move that way\nYou gonna be so blown\nI’m the realest in the game uh!\n\nSay I’m on fire with a blade\nYou’re about to hear my name\nRinging in your head like oh\n\nSo keep your eyes on me now\n무엇을 보든 좋아할 거야\nWe’re so tough\nNot scared to show you up\nCan you feel the rush now?\n\nAin’t nobody bringing us down down down down down down\nThey could try but we’re gonna wear the crown\nYou could go another round round round round round round round\nWish you luck but you’re not bringing us down\nWe go hard\nTill we get it get it\nWe go hard\nWe so in it in it\nWe POP/STARS\nOnly winning winning now\nAin’t nobody bringing us down down down down\n\nOh... 난 멈추지 않아\nOh oh we go hard\nOh oh we POP/STARS (stars), stars (stars)\n\nAin’t nobody bringing us\nAin’t nobody bringing us down down down down down down\nThey could try but we’re gonna wear the crown\nYou could go another round round round round round round round\nWish you luck but you’re not bringing us down\nWe go hard\nTill we get it get it\nWe go hard\nWe so in it in it\nWe POP/STARS\nOnly winning winning now\nAin’t nobody bringing us down down down down\n\nMORE RIOT GAMES MUSIC:\n\nhttps://www.youtube.com/user/RiotGamesInc/playlists?sort=dd&view=50&shelf_id=23\n\nPLAY LEAGUE OF LEGENDS:\n\nhttp://riot.com/signup\n\n#KDA #POPSTARS #LEAGUEOFLEGENDS"
+                        },
+                        "defaultAudioLanguage": "en"
+                    },
+                    "contentDetails": {
+                        "duration": "PT3M23S",
+                        "dimension": "2d",
+                        "definition": "hd",
+                        "caption": "true",
+                        "licensedContent": true,
+                        "projection": "rectangular"
+                    },
+                    "statistics": {
+                        "viewCount": "174318046",
+                        "likeCount": "2923180",
+                        "dislikeCount": "62574",
+                        "favoriteCount": "0",
+                        "commentCount": "181747"
+                    }
+                }
+            ]
+        }
+        return videoObject;
+        //return this._apiService.getVideo(searchPredicate);
+    }
+    getRelatedVideo(searchPredicate: searchPridicate){
+        this._apiService.getRelatedVideos(searchPredicate).toPromise().then((response) => {
+            if (response) {
+                this.setVideoList(response);
+            }
+        });
     }
 }
