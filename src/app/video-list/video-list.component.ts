@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { DataService } from '../services/BL';
-
+import { response, searchPridicate } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-video-list',
@@ -8,15 +8,36 @@ import { DataService } from '../services/BL';
   styleUrls: ['./video-list.component.sass']
 })
 export class VideoListComponent implements OnInit {
-  videoList: Object = {};
-  isMobileView = false;
-  constructor(private _dataService: DataService) { }
+  @Input() hideDisc: boolean = false;
+  @Input() hideFilter: boolean = false;
+  @Input() viewCount: Int32Array;
+  @Input() searchPredicate = new searchPridicate;
+
+  predicate = this.searchPredicate;
+  videoList: response = new response;
+  constructor(private _dataService: DataService) { 
+  }
 
   ngOnInit() {
-    this._dataService.currentVideoList.subscribe(currentVideoList => { this.videoList = currentVideoList;});
-    if (window.screen.width === 360) { // 768px portrait
-      this.isMobileView = true;
+    this._dataService.currentVideoList.subscribe(currentVideoList => {
+      if (currentVideoList.items && this.videoList.items) {
+        this.videoList.items = this.videoList.items.concat(currentVideoList.items);
+      }
+      else {
+        this.videoList = currentVideoList;
+
+      }
+      this.predicate.nextPageToken = currentVideoList.nextPageToken;
+    });
+  }
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      this._dataService.search(this.predicate);
     }
   }
+
+  
+
 
 }

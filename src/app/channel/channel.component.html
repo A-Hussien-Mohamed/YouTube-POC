@@ -1,0 +1,16 @@
+<div class="col-md-12 justify-content-center imageContainer" *ngIf="channel">
+  <img src="{{ isMobileView == true ? channel.brandingSettings.image.bannerMobileLowImageUrl : channel.brandingSettings.image.bannerImageUrl}}" class="full-width-image" alt="Responsive image">
+</div>
+<div class="row details justify-content-center" *ngIf="channel">
+  <div class="container">
+    <div class="title col-md-12">
+      <span>{{channel.snippet.title}}</span>
+    </div>
+    <div class="col-md-12 statistics ">
+        <i class="fab fa-youtube"></i> {{channel.statistics.subscriberCount | number:'1.0'}} Subscribed
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="channel">
+  <app-video-list [hideDisc]="false" [hideFilter]="true" [viewCount]="channel.statistics.viewCount"></app-video-list>
+</div>

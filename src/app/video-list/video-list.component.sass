@@ -18,27 +18,20 @@ $break-large: 1200px;
   min-width: 0
   overflow: hidden
   padding: 0 8px
-    
-@media screen and (max-width: 420px) 
-  .media-pic 
-    width: 160px
-    height: 90px
-  .media-body
-    max-width: 300px
-  .description
-    display: none !important 
-  .title
-    font-size: 10px !important
-  .stats
-    span
-      font-size: 10px
-
+  
+.media-pic 
+  cursor: pointer
+  
 .media
   .title
     float: left
     width: 100%
-    font-size: 12px
+    font-size: 15px
     font-weight: 600
+    cursor: pointer 
+    &:hover
+      color: rgb(22, 122, 198)
+      
   .stats
     float: left
     width: 100%
@@ -49,7 +42,7 @@ $break-large: 1200px;
       font-size: 15px
       i
         margin-right: 7px
-        color: #4765AB
+        color: #4765AB    
   .description
     float: left
     width: 100%
@@ -63,26 +56,30 @@ $break-large: 1200px;
     top: 4px
     color: #E74C3C
 
-.filter
-    align-items: center
-    flex-wrap: nowrap
-    .filterBtn
-        .btn
-            font-size: 20px
-            &:focus
-            box-shadow:none !important
-    .collapse
-        .card
-            padding: 1.25rem
-            border: 1px solid rgba(0,0,0,.125)
-            border-radius: .25rem
-            word-wrap: break-word
-            display: flex
-            flex-direction: column
-            background-color: #f1f1f1 !important
-    .collapsing 
-            background-color: #f1f1f1 !important 
+           
+@media screen and (max-width: 420px) 
+  .media-pic 
+    width: 160px
+    height: 90px
+  .media-body
+    max-width: 300px
+  .description
+    display: none !important 
+  .title
+    font-size: 10px !important
+  .stats
+    margin-top: 0px !important
+    span
+      font-size: 10px !important
+  
+    
 
+.separator
+  display: inline-block
+  color: #606060
+  margin: 0 4px
 
-         
-
+.channelTitle
+    cursor: pointer
+    &:hover
+      color: rgb(22, 122, 198)

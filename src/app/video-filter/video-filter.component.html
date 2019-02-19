@@ -1,0 +1,61 @@
+<div class="row filter" [hidden]="hideFilter">
+  <div class="col-md-10 col-lg-8 justify-content-center col-sm-11 col-xs-11">
+    <span [hidden]="!videoListInfo">About {{ videoListInfo ? videoListInfo.totalResults : ''}} Results</span>
+  </div>
+  <div class="filterBtn col-md-2 col-lg-2 col-sm-1 col-xs-1">
+    <button type="button" class="btn" data-toggle="collapse" data-target="#filter" aria-expanded="false" aria-controls="filter">
+      <i class="fas fa-sliders-h"></i> Filter</button>
+  </div>
+</div>
+<div class="col-md-12" style="margin-top:20px">
+  <div id="filter" class="row collapse">
+    <div class="col-md-4 col-sm-1">
+      <h6 class="categ-title">
+        {{publishedDate.categ}}
+      </h6>
+      <hr>
+      <div>
+        <table>
+          <tbody>
+            <tr *ngFor="let subItem of publishedDate.data">
+              <td [ngClass]="{'selectedFilter': publishedDate.selected == subItem}" (click)="setDateFilter(subItem)">{{subItem}}</td>
+              <td [hidden]="subItem != publishedDate.selected" (click)="publishedDate.selected = ''">x</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-1">
+      <h6 class="categ-title">
+        {{type.categ}}
+      </h6>
+      <hr>
+      <div>
+        <table>
+          <tbody>
+            <tr *ngFor="let subItem of type.data">
+              <td [ngClass]="{'selectedFilter': type.selected == subItem.value}" (click)="setType(subItem.value)">{{subItem.value}}</td>
+              <td [hidden]="subItem.value != type.selected" (click)="deleteSelectedFilter(type)">x</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-1">
+      <h6 class="categ-title">
+        {{order.categ}}
+      </h6>
+      <hr>
+      <div>
+        <table>
+          <tbody>
+            <tr *ngFor="let subItem of order.data">
+              <td [ngClass]="{'selectedFilter': order.selected == subItem.value}" (click)="setOrder(subItem.value)">{{subItem.value}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
