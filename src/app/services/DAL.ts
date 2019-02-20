@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { searchPridicate, response } from '../interfaces/interfaces';
 
-
-
-
 @Injectable()
 export class ConfigService {
     apiKey: string = 'AIzaSyDBFVPkq50JdsF2b_bmmWL3rbX1H-eNQ0M'; // api call key 
