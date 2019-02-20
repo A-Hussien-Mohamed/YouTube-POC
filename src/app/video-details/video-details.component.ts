@@ -19,23 +19,14 @@ export class VideoDetailsComponent implements OnInit {
   ngOnInit() {
     this._route.params.subscribe(params => {
       if (params['id']) {
-        this.predicate.id = params['id'];
         this.predicate.relatedToVideoId = params['id'];
         this.predicate.type = 'video';
         this._dataService.search(this.predicate);
-        // this._dataService.getVideo(this.predicate).toPromise().then((response: response) => {
-        //   debugger;
-        //   if (response) {
-        //     this._currentVideo = response.items[0];
-        //   }
-        // });
+        debugger;
+        this.predicate.id = params['id'];
         this._dataService.getVideo(this.predicate).subscribe((response:response) => {this._currentVideo = response.items[0];});
         this._VideoURL = this._VideoURL + params['id'];
       }
-    });
-    this._dataService.currentVideoList.subscribe(relatedVideos => {
-      this._relatedVideos = relatedVideos;
-      this.predicate.nextPageToken = relatedVideos.nextPageToken;
     });
   }
   @HostListener("window:scroll", [])

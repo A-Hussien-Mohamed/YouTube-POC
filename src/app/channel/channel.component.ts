@@ -18,9 +18,15 @@ export class ChannelComponent implements OnInit {
     this._route.params.subscribe(params => {
       if (params['id']) {
         this.predicate.id = params['id'];
-        this._dataService.getChannelDetails(this.predicate).subscribe((response: response) => { this.channel = response.items[0]; });
+        this._dataService.deleteCurrentVideoList();
+        this._dataService.getChannelDetails(this.predicate);
         this.predicate.channelId = params['id'];
         this._dataService.getChannelPlaylist(this.predicate);
+      }
+    });
+    this._dataService.currentChannel.subscribe((response: response) => {
+      if (response && response.items) {
+        this.channel = response.items[0];
       }
     });
     if (window.screen.width <= 400) { // 768px portrait

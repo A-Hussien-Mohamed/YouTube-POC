@@ -9,6 +9,7 @@ export class searchPridicate {
     publishedAfter:string;
     publishedBefore:string;
     channelId:string;
+    order:string
 }
 
 export class response {

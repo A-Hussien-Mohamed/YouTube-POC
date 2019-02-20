@@ -24,6 +24,9 @@ export class AppComponent {
 
 
   ngOnInit() {
+    this._dataService.currentPredicate.subscribe(currentPredicate => {
+      this.predicate = currentPredicate;
+    })
     if (window.screen.width <= 400) { // 768px portrait
       this.isMobileView = true;
     }
@@ -31,6 +34,8 @@ export class AppComponent {
 
   search(searchQuery: string) {
     this.predicate.query = searchQuery;
+    this._dataService.deleteCurrentVideoList();
+    this._dataService.setSearchPridicate(this.predicate);
     this._dataService.search(this.predicate);
     this.router.navigateByUrl('/video');
   }

@@ -16,7 +16,9 @@ export class ConfigService {
         params = searchPridicate.query ? params.set("q", searchPridicate.query) : params;
         params = searchPridicate.nextPageToken ? params.set("pageToken", searchPridicate.nextPageToken) : params;
         params = searchPridicate.type ? params.set("type", searchPridicate.type) : params;
+        params = searchPridicate.order ? params.set("order", searchPridicate.order) : params;
         params = searchPridicate.relatedToVideoId ? params.set("relatedToVideoId", searchPridicate.relatedToVideoId) : params;
+        params = searchPridicate.publishedAfter ? params.set("publishedAfter", searchPridicate.publishedAfter) : params;
         return this._httpClient.get<response>('https://www.googleapis.com/youtube/v3/search', { params });
     }
 
@@ -45,6 +47,7 @@ export class ConfigService {
     getChannelPlaylist(searchPridicate: searchPridicate){
         let params = new HttpParams().set("part", "snippet,contentDetails").set("key", this.apiKey).set("maxResults", '10');
         params = searchPridicate.channelId ? params.set("channelId", searchPridicate.channelId.toString()) : params;
+        params = searchPridicate.type ? params.set("type", 'video') : params;
         params = searchPridicate.nextPageToken ? params.set("pageToken", searchPridicate.nextPageToken) : params;
         return this._httpClient.get<response>('https://www.googleapis.com/youtube/v3/playlists', { params });
     }

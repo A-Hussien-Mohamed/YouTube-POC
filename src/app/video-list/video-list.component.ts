@@ -11,11 +11,11 @@ export class VideoListComponent implements OnInit {
   @Input() hideDisc: boolean = false;
   @Input() hideFilter: boolean = false;
   @Input() viewCount: Int32Array;
-  @Input() searchPredicate = new searchPridicate;
 
-  predicate = this.searchPredicate;
+
+  predicate = new searchPridicate;
   videoList: response = new response;
-  constructor(private _dataService: DataService) { 
+  constructor(private _dataService: DataService) {
   }
 
   ngOnInit() {
@@ -25,10 +25,12 @@ export class VideoListComponent implements OnInit {
       }
       else {
         this.videoList = currentVideoList;
-
       }
       this.predicate.nextPageToken = currentVideoList.nextPageToken;
     });
+    this._dataService.currentPredicate.subscribe(currentPredicate => {
+      this.predicate = currentPredicate;
+    })
   }
   @HostListener("window:scroll", [])
   onScroll(): void {
@@ -37,7 +39,7 @@ export class VideoListComponent implements OnInit {
     }
   }
 
-  
+
 
 
 }
