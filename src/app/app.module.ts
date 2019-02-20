@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,16 +14,10 @@ import { VideoDetailsComponent } from './video-details/video-details.component';
 import { VideoFilterComponent } from './video-filter/video-filter.component'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ChannelComponent } from './channel/channel.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    VideoListComponent,
-    VideoDetailsComponent,
-    VideoFilterComponent,
-    ChannelComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,12 +26,20 @@ import { ChannelComponent } from './channel/channel.component';
     SlimLoadingBarModule.forRoot(),
     InfiniteScrollModule
   ],
+  declarations: [
+    AppComponent,
+    VideoListComponent,
+    VideoDetailsComponent,
+    VideoFilterComponent,
+    ChannelComponent
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptor,
     multi: true,
   },
-    ConfigService, DataService],
+    ConfigService, DataService , {provide: APP_BASE_HREF, useValue : '/' }],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   exports: [BrowserModule, SlimLoadingBarModule]
 })

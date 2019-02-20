@@ -47,7 +47,7 @@
     </svg>
   </a>
   <div class="input-group col-sm-3 col-xs-3 col-md-6">
-    <input type="text" class="form-control" placeholder="search" (keydown.enter)="search(searchQuery)" [(ngModel)]="searchQuery"
+    <input type="text" class="form-control" placeholder="search" (keydown.enter)="search(searchQuery)" [ngModel]="searchQuery"
       aria-label="search" aria-describedby="searchInput">
     <div class="input-group-append">
       <span class="input-group-text" id="searchInput" (click)="search(searchQuery)"><i class="fas fa-search"></i></span>

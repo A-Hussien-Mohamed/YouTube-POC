@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 
 export class AppComponent {
+  title = "Instabug-YouTube"
   searchQuery: string = '';
   isMobileView = false;
 

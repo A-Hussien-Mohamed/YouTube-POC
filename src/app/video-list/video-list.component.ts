@@ -9,7 +9,7 @@ import { response, searchPridicate } from '../interfaces/interfaces';
 })
 export class VideoListComponent implements OnInit {
   @Input() hideDisc: boolean = false;
-  @Input() hideFilter: boolean = false;
+  @Input('hideFilter') hideFilter: boolean = false;
   @Input() viewCount: Int32Array;
 
 

@@ -41,6 +41,8 @@ export class DataService {
                 this.setSearchPridicate(searchPredicate);
                 this.setVideoList(response);
             }
+        }).catch(error => {
+            console.log(error.message);
         });
     }
     getVideo(searchPredicate: searchPridicate) {
@@ -49,6 +51,8 @@ export class DataService {
                 if (response) {
                     observer.next(response);
                 }
+            }).catch(error => {
+                console.log(error);
             });
         });
         return video;
@@ -58,10 +62,11 @@ export class DataService {
     }
     getChannelDetails(searchPredicate: searchPridicate) {
         this._apiService.getChannelDetails(searchPredicate).toPromise().then((response) => {
-            debugger;
             if (response) {
                 this.setChannelDetails(response);
             }
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -70,6 +75,8 @@ export class DataService {
             if (response) {
                 this.setVideoList(response);
             }
+        }).catch(error => {
+            console.log(error);
         });
     }
 }

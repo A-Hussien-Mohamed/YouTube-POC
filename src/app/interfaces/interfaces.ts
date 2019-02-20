@@ -2,7 +2,7 @@
 export class searchPridicate {
     id: string;
     query: string;
-    maxResults: null;
+    maxResults: string;
     nextPageToken: string;
     type: string;
     relatedToVideoId: string;
